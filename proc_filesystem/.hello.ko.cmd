@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/os/proc_filesystem/hello.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/user/Desktop/os/proc_filesystem/hello.ko /home/user/Desktop/os/proc_filesystem/hello.o /home/user/Desktop/os/proc_filesystem/hello.mod.o;  true
