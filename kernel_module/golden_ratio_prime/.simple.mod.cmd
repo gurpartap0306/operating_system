@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.mod := { echo  /home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.o; echo; } > /home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.mod

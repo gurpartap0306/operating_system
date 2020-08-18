@@ -1,0 +1,1 @@
+cmd_/home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.ko /home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.o /home/user/Desktop/os/kernel_module/golden_ratio_prime/simple.mod.o;  true
