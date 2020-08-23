@@ -16,6 +16,8 @@ int main(void) {
       printf("osh>");
       fflush(stdout);
 
+      int flag=0;  /*to check the the condition for & */
+
       /*get command line arguments*/
       char *buf=(char*)malloc(MAX_LINE*sizeof(char));
       ssize_t n = read(0,buf,MAX_LINE);
@@ -37,8 +39,11 @@ int main(void) {
         }
         buf++;
       }
+      /* replace '\n with '\0' at last of the input */
       buf--;
       *buf='\0';
+      /* terminalte the array of arguments with NULL pointer*/
+      args[i]=NULL;
 
       /* to check exit condition*/
       char pr[80];
@@ -48,19 +53,15 @@ int main(void) {
         should_run=0;
       }
 
-      /*display all arguments from command line*//*
-      int j=0;
-      while (i>=1){
-        while(**(args+j)){
-          printf("%c",**(args+j));
-          *(args+j)+=1;
-        }
-        printf(" ");
-        j++;
-        i--;
+      /* check condition for '&'*/
+      i--;
+      char new[5];
+      sprintf(new,args[i],5);
+      if(strcmp(new,"&")==0){
+        flag=1;
+        printf("%d\n",flag);
+        args[i]=NULL;
       }
-      printf("\b");
-*/
 
       pid_t pid;
 
@@ -73,16 +74,14 @@ int main(void) {
       }
 
       if(pid ==0 ){/* child process */
-        char *temp[5];
-        char t[15],t2[15];
-        sprintf(t,args[0],5);
-        temp[0]=t;
-        //printf("%s\n",t);
-        strcpy(t2,"/bin");
-        execvp(t2,args);
+
+        /*execute command*/
+        execvp(args[0],args);
+
       }
       if(pid>0){/*parent process*/
-        wait(NULL);
+        if(flag==0);
+          wait(NULL);
       }
 
     }
